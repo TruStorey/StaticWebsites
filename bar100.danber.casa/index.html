@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bar100</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/aos.css">
+    <link rel="stylesheet" href="./assets/css/line-awesome.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container flex-lg-column">
+            <a class="navbar-brand mx-lg-auto mb-lg-4" href="#">
+                <span data-aos="fade-up" data-aos-delay="300">
+                    <h1>Bar100</h1>
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto flex-lg-column text-lg-center">
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#home">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#cocktails">Cocktails</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#bottles">Bottles</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENT WRAPPER -->
+    <div id="content-wrapper">
+        <!-- HOME -->
+        <section id="home" class="full-height px-lg-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <h1 class="display-4" data-aos="fade-up">Welcome to Bar100</h1>
+                        <p class="lead mt-2 mb-4 " data-aos="fade-up" data-aos-delay="300">Founded and served unto you
+                            by Danber, since the dawn of 2023 in opulent sophistication.</p>
+                        <div data-aos="fade-up" data-aos-delay="600">
+                            <a href="#cocktails" class="btn btn-brand me-3">Explore Cocktails</a>
+                            <a href="#bottles" class="link-custom">or order off menu</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- // HOME -->
+        <!-- COCKTAILS -->
+
+        <section id="cocktails" class="full-height px-lg-5">
+            <div class="container">
+                <div class="row pb-4" data-aos="fade-up">
+                    <div class="col-lg-8">
+                        <h4 class="text-brand">COCKTAILS</h4>
+                        <h1>Drink responsibly – Don’t spill any</h1>
+                    </div>
+                </div>
+
+                <div class="row equal-cols">
+                    <div class="col-md-4 mb-4" data-aos="zoom-in-up">
+                        <div class="cocktails p-4 bg-base rounded-4 shadow-effect">
+                            <div class="iconbox rounded-4">
+                                <i class="las la-glass-martini"></i>
+                            </div>
+                            <h4 class="mt-4 mb-3">Espresso Martini</h4>
+                            <p><i class="fa-solid fa-bottle-droplet"></i> Mr Black coffee liquer</p>
+                            <p><i class="fa-solid fa-bottle-droplet"></i> Bar100's Vodka choice</p>
+                            <p><i class="fa-solid fa-mug-hot"></i> Fresh ground espresso coffee</p>
+                            <p><i class="fa-solid fa-seedling"></i> Coffee bean</p>
+                            <div class="position-absolute bottom-0 end-0 pb-3 pe-5">
+                                <a onclick="fetch('https://ntfy.danber.casa/bar100', { method: 'POST', headers: {'title':'Bar100: Drinks Order Received', 'tags':'cocktail'}, body: 'Somebody ordered a Espresso Martini'})"
+                                    class="link-custom fw-bold" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">Order here</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4  mb-4" data-aos="zoom-in-up" data-aos-delay="300">
+                        <div class="cocktails p-4 bg-base rounded-4 shadow-effect">
+                            <div class="iconbox rounded-4">
+                                <i class="las la-wine-glass-alt"></i>
+                            </div>
+                            <h4 class="mt-4 mb-3">G&T</h4>
+                            <p><i class="fa-solid fa-bottle-droplet"></i> Aviator Gin</p>
+                            <p><i class="fa-solid fa-glass-water"></i> Fever-Tree light mediterranean tonic</p>
+                            <p><i class="fa-solid fa-seedling"></i> Rose petal</p>
+                            <div class="position-absolute bottom-0 end-0 pb-3 pe-5">
+                                <a onclick="fetch('https://api.pushcut.io/6sc3ulJ9uoyQnrLxfiXaU/notifications/Bar100-GandT')"
+                                    class="link-custom fw-bold" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">Order here</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4  mb-4" data-aos="zoom-in-up" data-aos-delay="600">
+                        <div class="cocktails p-4 bg-base rounded-4 shadow-effect">
+                            <div class="iconbox rounded-4">
+                                <i class="las la-glass-whiskey"></i>
+                            </div>
+                            <h4 class="mt-4 mb-3">Negroni</h4>
+                            <p><i class="fa-solid fa-bottle-droplet"></i> Aviator Gin</p>
+                            <p><i class="fa-solid fa-bottle-droplet"></i> Campari</p>
+                            <p><i class="fa-solid fa-bottle-droplet"></i> Vermouth</p>
+                            <div class="position-absolute bottom-0 end-0 pb-3 pe-5">
+                                <a onclick="fetch('https://api.pushcut.io/6sc3ulJ9uoyQnrLxfiXaU/notifications/Bar100-Negroni')"
+                                    class="link-custom fw-bold" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">Order here</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- // COCKTAILS -->
+        <!-- BOTTLES -->
+        <section>
+            <section id="bottles" class="full-height px-lg-5">
+                <div class="container">
+                    <div class="row pb-4" data-aos="fade-up">
+                        <div class="col-lg-8">
+                            <h4 class="text-brand">BOTTLES</h4>
+                            <h1>Here’s to alcohol, the rose-colored glasses of life</h1>
+                        </div>
+                    </div>
+
+                    <div class="row equal-cols">
+                        <div class="col-md-4 mb-4" data-aos="zoom-in-up">
+                            <div class="cocktails p-4 bg-base rounded-4 shadow-effect">
+                                <h4 class="mb-3">Arcanist Pineapple Rum</h4>
+                                <p>If you don't know what an arcanist is, it's someone who possesses a secret method to
+                                    making something... And now it's got a rum named after it! Arcanist Pineapple Rum is
+                                    made with a base of Guyanese rum, which is shipped over to Kent and treated to a
+                                    generous dose of pineapple and a handful of spices too. We can't tell you which
+                                    ones, though – you'll have to have a taste to figure that out!</p>
+                                <div class="position-absolute bottom-0 end-0 pb-3 pe-5">
+                                    <a onclick="fetch('https://ntfy.danber.casa/bar100', { method: 'POST', headers: {'title':'Drinks Order Received', tags':'cocktail'}, body: 'Somebody ordered a Espresso Martini'})" class="link-custom fw-bold">Order here</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- // BOTTLES -->
+
+
+    </div>
+    <!-- // CONTENT WRAPPER-->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content bg-base rounded-4">
+                <div class="modal-header">
+                    <h1 class="fs-5" id="exampleModalLabel">Your order has been sent</h1>
+                </div>
+                <div class="modal-body">
+                    <p>It might turn up...</p>
+                    <div class="position-absolute bottom-0 end-0 pb-3 pe-5">
+                        <a href="#" class="link-custom fw-bold" data-bs-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/aos.js"></script>
+    <script src="./assets/js/main.js"></script>
+
+</body>
+
+</html>

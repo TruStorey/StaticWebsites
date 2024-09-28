@@ -1,0 +1,113 @@
+<html>
+
+<head>
+  <title>Visual Subnet Calculator</title>
+
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+  <div id="content-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10">
+          <h1 class="display-4">Visual Subnet Calculator</h1>
+          <div>
+            <p class="lead mt-2 mb-2">Enter the network you wish to subnet:</p>
+            <form name="calc" onsubmit="updateNetwork(); return false;">
+              <div class="row g-3">
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="Network" aria-label="Network" name="network"
+                    value="192.168.0.0">
+                </div>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control" placeholder="Mask Bits" aria-label="Mask Bits" name="netbits"
+                    value="16">
+                </div>
+                <div class="col-sm">
+                  <input class="btn btn-primary" type="submit" value="Update">
+                  <input class="btn btn-secondary" type="button" value="Reset"
+                    onclick="if (confirm('This will reset all subnet divisions you have made. Proceed?')) startOver();">
+                </div>
+              </div>
+              <br>
+              <div class="row g-3">
+                <div class="col-sm form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="cb_subnet" checked
+                    onclick="toggleColumn(this)">
+                  <label class="form-check-label" for="cb_subnet">Subnet</label>
+                </div>
+                <div class="col-sm form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="cb_netmask"
+                    onclick="toggleColumn(this)">
+                  <label class="form-check-label" for="cb_netmask">Netmask</label>
+                </div>
+                <div class="col-sm form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="cb_range" checked
+                    onclick="toggleColumn(this)">
+                  <label class="form-check-label" for="cb_range">Range</label>
+                </div>
+                <div class="col-sm form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="cb_useable"
+                    onclick="toggleColumn(this)">
+                  <label class="form-check-label" for="cb_useable">Useable IPs</label>
+                </div>
+                <div class="col-sm form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="cb_hosts" checked
+                    onclick="toggleColumn(this)">
+                  <label class="form-check-label" for="cb_hosts">Hosts</label>
+                </div>
+                <div class="col-sm form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="cb_divide" checked
+                    onclick="toggleColumn(this)">
+                  <label class="form-check-label" for="cb_divide">Divide</label>
+                </div>
+                <div class="col-sm form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="cb_join" checked
+                    onclick="toggleColumn(this)">
+                  <label class="form-check-label" for="cb_join">Join</label>
+                </div>
+                </p>
+                <hr noshade color="black" size="1">
+              </div>
+            </form>
+
+            <div>
+              <table cellspacing="2" cellpadding="2" class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <th id="subnetHeader">Subnet address</th>
+                    <th id="netmaskHeader">Netmask</th>
+                    <th id="rangeHeader">Range of addresses</th>
+                    <th id="useableHeader">Useable IPs</th>
+                    <th id="hostsHeader">Hosts</th>
+                    <th id="divideHeader">Divide</th>
+                    <th id="joinHeader">Join</th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider" id="calcbody">
+                  <!--tr>
+                      <td>130.94.203.0/24</td>
+                      <td>130.94.203.0 - 130.94.203.255</td>
+                      <td>130.94.203.1 - 130.94.203.254 (254)</td>
+                      <td>Divide</td>
+                      </tr-->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/js/aos.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+
+</body>
+
+</html>

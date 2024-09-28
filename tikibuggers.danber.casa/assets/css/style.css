@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Island+Moments&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Seaweed+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hanalei&display=swap');
+
+:root {
+    /* ORIGINAL COLOURS 
+    --color-body: #b6cbce;
+    --color-heading: #eef3db;
+    --color-base: #033f47;
+    --color-base2: #022a30;
+    --color-brand: #e0f780;
+    --color-brand2: #deff58;
+    */
+    --color-body: #b6cbce;
+    --color-heading: #eef3db;
+    --color-base: #ECB42A;
+    --color-base2: #B47D5E;
+    --color-brand: #e7d09e;
+    --color-brand2: #c09b64;
+    --sidebar-width: 240px;
+    --font-heading: "Inika";
+    --font-body: "Inika";
+    
+}
+
+@media (min-width: 992px) {
+    body {
+        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(48, 48, 48, 0.1)), url(../images/nedelko-dekovic-MRn9XuhD_HM-unsplash.jpg);
+        height: 100vh;
+        background-position: left var(--sidebar-width) bottom 0;
+        background-size:cover;
+        color: var(--color-body);
+        font-family: var(--font-body);
+        background-attachment: fixed;
+    }
+}
+
+
+body {
+    background-color: var(--color-base);
+    color: var(--color-body);
+    font-family: var(--font-body);
+    
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: var(--color-heading);
+    font-family: var(--font-heading);
+    
+}
+
+.bg-image {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(48, 48, 48, 0.1)), url(../images/nedelko-dekovic-MRn9XuhD_HM-unsplash.jpg);
+    height: 100vh;
+    background-attachment: scroll;
+    background-position: center;
+    background-size: cover;
+}
+a {
+    text-decoration: none;
+    color: var(--color-body);
+    transition: all 0.4s ease;
+}
+
+a:hover {
+    color: var(--color-brand);
+}
+
+img {
+    width: 100%;
+}
+
+.text-brand {
+    color: var(--color-brand)
+}
+
+.bg-base {
+    background-color: var(--color-base);
+}
+
+.full-height {
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+
+.shadow-effect {
+    transition: all 0.5s;
+}
+
+.shadow-effect:hover {
+    box-shadow: -6px 6px 0 0px var(--color-brand);
+}
+
+.iconbox {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    background-color: var(--color-brand);
+    color: var(--color-base);
+}
+
+/* NAVBAR */
+.navbar {
+    background-color: var(--color-base);
+}
+.navbar .nav-link {
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.navbar .nav-link:hover {
+    color: var(--color-brand);
+}
+
+@media (min-width: 992px) {
+    .navbar {
+        min-height: 100vh;
+        width: var(--sidebar-width);      
+
+}
+
+/* CONTENT WRAPPER */
+@media (min-width: 992px) {
+    #content-wrapper {
+        padding-left: var(--sidebar-width);
+    }
+}
+
+/* BTN */
+.btn {
+    padding: 12px 28px;
+    font-weight: 400;
+}
+
+.btn-brand {
+    background-color: var(--color-brand);
+    border-color: var(--color-brand);
+}
+
+.btn-brand:hover,
+.btn-brand:focus {
+    background-color: var(--color-brand2);
+    color: var(--color-base);
+    border-color: var(--color-brand2);
+}
+
+.link-custom {
+    font-weight: 400;
+    position: relative;
+}
+
+.link-custom:after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background-color: var(--color-brand);
+    position: absolute;
+    left: 0;
+    top: 110%;
+    transition: all 0.4s;
+}
+
+.link-custom:hover::after {
+    width: 100%;
+
+}
+.row.equal-cols {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.row.equal-cols:before,
+.row.equal-cols:after {
+  display: block;
+}
+
+.row.equal-cols > [class*='col-'] {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.row.equal-cols > [class*='col-'] > * {
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto; 
+}
