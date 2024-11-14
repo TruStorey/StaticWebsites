@@ -107,6 +107,10 @@ img {
     color: var(--color-brand);
 }
 
+.nav-custom {
+    color: var(--color-brand);
+}
+
 @media (min-width: 992px) {
     .navbar {
         min-height: 100vh;
@@ -337,7 +341,7 @@ select.form-control:focus {
 
 .table.table-bordered.table-sm th#divideHeader {
     width: 7.5%;
-},
+}
 .table.table-bordered.table-sm th#joinHeader {
     width: 30%;
 }

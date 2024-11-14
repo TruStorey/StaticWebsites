@@ -1,7 +1,8 @@
-AOS.init();
+// AOS.init();
 
 // You can also pass an optional settings object
 // below listed default settings
+
 AOS.init({
   // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
   offset: 120, // offset (in px) from the original trigger point
@@ -12,4 +13,17 @@ AOS.init({
   mirror: false, // whether elements should animate out while scrolling past them
   anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
 
+});
+
+function loadSection(sectionId, filePath) {
+  fetch(filePath)
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById(sectionId).innerHTML = html;
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  loadSection("home-section", "home.html");
+  // Add other sections as needed
 });

@@ -388,25 +388,9 @@ function subnet_netmask(mask)
 }
 
 
-function preloadSubnetImages()
-{
-  if (document.images) {
-    if (!document.preloadedImages) {
-      document.preloadedImages = new Array();
-    }
-
-    for (var i=0; i<=32; i++) {
-      var img = new Image();
-      img.src = 'assets/images/'+i+'.gif';
-      document.preloadedImages.push(img);
-    }
-  }
-}
-
-
 function calcOnLoad()
 {
-  preloadSubnetImages();
+  /*preloadSubnetImages();*/
   args = parseQueryString();
   if (args['network'] && args['mask'] && args['division']) {
     document.forms['calc'].elements['network'].value = args['network'];
