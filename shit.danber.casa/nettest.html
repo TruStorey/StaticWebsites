@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Test Command Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        label {
+            margin-right: 10px;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .command-output {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f4f4f4;
+            min-height: 40px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Network Test Command Generator</h1>
+
+        <!-- IP/Hostname input -->
+        <label for="ips">Enter IP(s) or Hostname(s) (comma-separated):</label>
+        <input type="text" id="ips" placeholder="e.g., 192.168.1.1, example.com">
+
+        <!-- Checkboxes for different network tests -->
+        <label><input type="checkbox" id="ping"> Ping</label>
+        <label><input type="checkbox" id="traceroute"> Traceroute</label>
+        <label><input type="checkbox" id="nslookup"> NSLookup</label><br><br>
+
+        <!-- Network interface test -->
+        <label><input type="checkbox" id="network-interface"> Network Interface Info</label><br><br>
+
+        <!-- Netcat port testing -->
+        <label><input type="checkbox" id="nc"> Test Ports (Netcat)</label><br>
+        <label>Common Ports:</label><br>
+        <label><input type="checkbox" id="ssh-port"> SSH (22)</label>
+        <label><input type="checkbox" id="http-port"> HTTP (80)</label>
+        <label><input type="checkbox" id="https-port"> HTTPS (443)</label>
+        <label><input type="checkbox" id="ftp-port"> FTP (21)</label><br><br>
+
+        <!-- Additional ports -->
+        <label for="additional-ports">Add custom ports (comma-separated):</label>
+        <input type="text" id="additional-ports" placeholder="e.g., 8080, 3306">
+
+        <!-- Button to generate commands -->
+        <button onclick="generateCommands()">Generate Commands</button>
+
+        <!-- Output areas for each shell type -->
+        <div>
+            <h3>Bash Commands</h3>
+            <textarea id="bash-output" class="command-output" readonly></textarea>
+        </div>
+        <div>
+            <h3>PowerShell Commands</h3>
+            <textarea id="powershell-output" class="command-output" readonly></textarea>
+        </div>
+    </div>
+
+    <script>
+        function generateCommands() {
+            // Get input values
+            const ips = document.getElementById("ips").value.split(",");
+            const isPingChecked = document.getElementById("ping").checked;
+            const isTracerouteChecked = document.getElementById("traceroute").checked;
+            const isNslookupChecked = document.getElementById("nslookup").checked;
+            const isNetworkInterfaceChecked = document.getElementById("network-interface").checked;
+            const isNcChecked = document.getElementById("nc").checked;
+
+            const sshPort = document.getElementById("ssh-port").checked ? 22 : null;
+            const httpPort = document.getElementById("http-port").checked ? 80 : null;
+            const httpsPort = document.getElementById("https-port").checked ? 443 : null;
+            const ftpPort = document.getElementById("ftp-port").checked ? 21 : null;
+            const additionalPorts = document.getElementById("additional-ports").value.split(",").map(port => port.trim()).filter(Boolean);
+
+            // Initialize command lists for each shell type
+            let bashCommands = [];
+            let powershellCommands = [];
+
+            // Loop through each IP/hostname
+            ips.forEach(ip => {
+                ip = ip.trim(); // Remove extra spaces
+
+                // Generate commands based on checkboxes for each shell
+                if (isPingChecked) {
+                    bashCommands.push(generatePingCommand(ip, "bash"));
+                    powershellCommands.push(generatePingCommand(ip, "powershell"));
+                }
+                if (isTracerouteChecked) {
+                    bashCommands.push(generateTracerouteCommand(ip, "bash"));
+                    powershellCommands.push(generateTracerouteCommand(ip, "powershell"));
+                }
+                if (isNslookupChecked) {
+                    bashCommands.push(generateNslookupCommand(ip, "bash"));
+                    powershellCommands.push(generateNslookupCommand(ip, "powershell"));
+                }
+                if (isNetworkInterfaceChecked) {
+                    bashCommands.push(generateNetworkInterfaceCommand(ip, "bash"));
+                    powershellCommands.push(generateNetworkInterfaceCommand(ip, "powershell"));
+                }
+                if (isNcChecked) {
+                    // Test common ports first
+                    if (sshPort) bashCommands.push(generateNcCommand(ip, 22, "bash"));
+                    if (httpPort) bashCommands.push(generateNcCommand(ip, 80, "bash"));
+                    if (httpsPort) bashCommands.push(generateNcCommand(ip, 443, "bash"));
+                    if (ftpPort) bashCommands.push(generateNcCommand(ip, 21, "bash"));
+
+                    if (sshPort) powershellCommands.push(generateNcCommand(ip, 22, "powershell"));
+                    if (httpPort) powershellCommands.push(generateNcCommand(ip, 80, "powershell"));
+                    if (httpsPort) powershellCommands.push(generateNcCommand(ip, 443, "powershell"));
+                    if (ftpPort) powershellCommands.push(generateNcCommand(ip, 21, "powershell"));
+
+                    // Test additional custom ports
+                    additionalPorts.forEach(port => {
+                        bashCommands.push(generateNcCommand(ip, port, "bash"));
+                        powershellCommands.push(generateNcCommand(ip, port, "powershell"));
+                    });
+                }
+            });
+
+            // Display the generated commands in one-liner outputs for each shell type
+            document.getElementById("bash-output").value = bashCommands.join(" && ");
+            document.getElementById("powershell-output").value = powershellCommands.join(" && ");
+        }
+
+        // Generate the appropriate ping command based on selected shell
+        function generatePingCommand(ip, shell) {
+            switch (shell) {
+                case "bash":
+                    return `ping -c 4 ${ip}`;
+                case "powershell":
+                    return `Test-Connection ${ip} -Count 4`;
+                default:
+                    return `ping ${ip}`;
+            }
+        }
+
+        // Generate the appropriate traceroute command based on selected shell
+        function generateTracerouteCommand(ip, shell) {
+            switch (shell) {
+                case "bash":
+                    return `traceroute ${ip}`;
+                case "powershell":
+                    return `Test-NetConnection -Traceroute ${ip}`;
+                default:
+                    return `tracert ${ip}`;
+            }
+        }
+
+        // Generate the appropriate nslookup command based on selected shell
+        function generateNslookupCommand(ip, shell) {
+            switch (shell) {
+                case "bash":
+                    return `nslookup ${ip}`;
+                case "powershell":
+                    return `Resolve-DnsName ${ip}`;
+                default:
+                    return `nslookup ${ip}`;
+            }
+        }
+
+        // Generate the appropriate network interface command based on selected shell
+        function generateNetworkInterfaceCommand(ip, shell) {
+            switch (shell) {
+                case "bash":
+                    return `ip addr show ${ip}`;
+                case "powershell":
+                    return `Get-NetIPAddress -IPAddress ${ip}`;
+                default:
+                    return `ipconfig /all`;
+            }
+        }
+
+        // Generate the appropriate nc command based on selected shell and port
+        function generateNcCommand(ip, port, shell) {
+            switch (shell) {
+                case "bash":
+                    return `nc -zv ${ip} ${port}`;
+                case "powershell":
+                    return `Test-NetConnection -ComputerName ${ip} -Port ${port}`;
+                default:
+                    return `nc -zv ${ip} ${port}`;
+            }
+        }
+    </script>
+
+</body>
+</html>

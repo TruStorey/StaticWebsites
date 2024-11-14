@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --color-body: #b6cbce;
+    --color-heading: #eef3db;
+    --color-base: #212936;
+    --color-base2: #171d25;
+    --color-brand: #fc3939;
+    --color-brand2: #ff1f1f;
+    --sidebar-width: 250px;
+    --font-heading: "JetBrains Mono";
+    --font-body: "Raleway";
+}
+
+body {
+    background-color: var(--color-base2);
+    color: var(--color-body);
+    font-family: var(--font-body);
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: var(--color-heading);
+    font-family: var(--font-heading);
+    
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-body);
+    transition: all 0.4s ease;
+}
+
+a:hover {
+    color: var(--color-brand);
+}
+
+img {
+    width: 100%;
+}
+
+.text-brand {
+    color: var(--color-brand)
+}
+
+.bg-base {
+    background-color: var(--color-base);
+}
+
+.full-height {
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 80px;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+
+.shadow-effect {
+    transition: all 0.5s;
+}
+
+.shadow-effect:hover {
+    box-shadow: -6px 6px 0 0px var(--color-brand);
+}
+
+.iconbox {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    background-color: var(--color-brand);
+    color: var(--color-base);
+}
+
+/* NAVBAR */
+.navbar-container {
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start; 
+    height: 100vh;           
+    
+}
+.navbar {
+    background-color: var(--color-base);
+    width: var(--sidebar-width);
+    display: flex;              
+    flex-direction: column;     
+    justify-content: center;  
+    height: 100%;            
+    padding-top: 20px;
+}
+.navbar .nav-link {
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.navbar .nav-link:hover {
+    color: var(--color-brand);
+}
+
+@media (min-width: 992px) {
+    .navbar {
+        min-height: 100vh;
+        width: var(--sidebar-width);
+        background-color: var(--color-base);
+        background-size: cover;
+        background-position: center;
+        background-repeat: repeat;
+    }
+}
+
+/* CONTENT WRAPPER */
+@media (min-width: 992px) {
+    #content-wrapper {
+        padding-left: var(--sidebar-width);
+    }
+}
+
+/* BTN and LINKS */
+.btn {
+    padding: 10px 28px;
+    font-weight: 600;
+}
+
+.btn-brand {
+    background-color: var(--color-brand);
+    border-color: var(--color-brand);
+}
+
+.btn-brand:hover,
+.btn-brand:focus {
+    background-color: var(--color-brand2);
+    color: var(--color-base);
+    border-color: var(--color-brand2);
+}
+
+.link-custom {
+    font-weight: 400;
+    position: relative;
+}
+
+.link-custom:after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background-color: var(--color-brand);
+    position: absolute;
+    left: 0;
+    top: 110%;
+    transition: all 0.4s;
+}
+
+.link-custom:hover::after {
+    width: 100%;
+
+}
+
+.link-reverse {
+    color: var(--color-brand)
+}
+
+/* ROW */
+.row.equal-cols {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.row.equal-cols:before,
+.row.equal-cols:after {
+  display: block;
+}
+
+.row.equal-cols > [class*='col-'] {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.row.equal-cols > [class*='col-'] > * {
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto; 
+}
+
+/* Input and Select Fields */
+
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    background-color: var(--color-base);
+    color: var(--color-body); /* or you can use var(--color-heading) if the text needs to be lighter */
+    border: 1px solid var(--color-body); /* Optional: Adds border matching the text color */
+    padding: 10px;
+    font-family: var(--font-body);
+    font-size: 16px;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus {
+    background-color: var(--color-base); /* Maintain background on focus */
+    color: var(--color-body);
+    border: 1px solid var(--color-brand); /* Optional: Change border on focus to highlight */
+    outline: none; /* Remove default outline */
+}
+
+.input-box {
+    width: 100%; /* or a specific pixel size like 1000px */
+    height: 150px; /* Increase the height as needed */
+    padding: 10px;
+    border: 1px solid var(--color-body);
+    border-radius: 5px;
+}
+
+.input-box:focus {
+    width: 100%; /* or a specific pixel size like 1000px */
+    height: 150px; /* Increase the height as needed */
+    padding: 10px;
+    border: 1px solid var(--color-brand);
+    outline: none;
+    
+}
+select {
+    background-color: var(--color-base);
+    color: var(--color-body); /* Ensure the text is readable */
+    border: 1px solid var(--color-body); /* Match the border to the form */
+    padding: 10px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    
+    /* Remove default dropdown appearance */
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    /* Remove default border from the select box in Firefox */
+    background-image: none; /* Remove the default arrow */
+}
+
+select.form-control {
+    background-color: var(--color-base);
+    color: var(--color-body); /* Ensure text is readable */
+    border: 1px solid var(--color-body);
+    padding: 10px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+select.form-control:focus {
+    background-color: var(--color-base);
+    color: var(--color-body);
+    border: 1px solid var(--color-brand);
+    outline: none;
+}
+
+/* Toggle Button override */
+.form-check-input {
+    background-color: var(--color-base); /* Default background */
+    border-color: var(--color-body); /* Border color */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+}
+
+.form-check-input:checked {
+    background-color: var(--color-brand); /* When checked, use brand color */
+    border-color: var(--color-brand); /* Border color matches brand */
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(252, 57, 57, 0.25); /* Subtle glow on focus */
+}
+
+.form-check-input:checked[type="checkbox"] {
+    background-color: var(--color-brand); /* When checked, use brand color */
+    border-color: var(--color-brand); /* Border when checked */
+}
+
+.form-check-label {
+    color: var(--color-body); /* Default color for label */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.form-check-input:checked + .form-check-label {
+    color: var(--color-brand); /* Change label color to brand color when checked */
+}
+
+/* Vertical Text */
+.vertical-text {
+    writing-mode: vertical-rl; /* Sets text to vertical from top to bottom */
+}
+
+/* Talbe Overrides */
+.table.table-bordered.table-sm {
+    width: 100%;
+    background-color: var(--color-base) !important;
+    color: var(--color-body) !important;
+    font-family: var(--font-body) !important;
+    border-collapse: collapse;
+    border: 1px solid var(--color-body) !important;
+    table-layout: fixed; /* Ensures columns keep a fixed width */
+}
+
+/* Define fixed widths for each column header to prevent resizing */
+.table.table-bordered.table-sm th#subnetHeader {
+    width: 12.5%; /* Adjust based on your layout needs */
+}
+
+.table.table-bordered.table-sm th#netmaskHeader {
+    width: 12.5%;
+}
+
+.table.table-bordered.table-sm th#rangeHeader {
+    width: 20%;
+}
+
+.table.table-bordered.table-sm th#useableHeader {
+    width: 15%;
+}
+
+.table.table-bordered.table-sm th#hostsHeader {
+    width: 7.5%;
+}
+
+.table.table-bordered.table-sm th#divideHeader {
+    width: 7.5%;
+},
+.table.table-bordered.table-sm th#joinHeader {
+    width: 30%;
+}
+
+.table.table-bordered.table-sm th, 
+.table.table-bordered.table-sm td {
+    background-color: var(--color-base) !important; /* Enforce background color */
+    color: var(--color-body) !important;           /* Enforce text color */
+    padding: 10px !important;
+    border: 1px solid var(--color-body) !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+/* Header row styling */
+.table.table-bordered.table-sm thead th {
+    background-color: var(--color-base2) !important;
+    color: var(--color-heading) !important;
+    font-weight: bold !important;
+    font-family: var(--font-heading) !important;
+    padding: 12px !important;
+}
+
+/* Style individual cells in the table */
+.table.table-bordered.table-sm tbody tr td {
+    color: var(--color-body) !important;
+    background-color: var(--color-base) !important;
+}
+
+/* Row striping for visual distinction */
+.table.table-bordered.table-sm tbody tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Hover effect for table rows */
+.table.table-bordered.table-sm tbody tr:hover {
+    background-color: var(--color-brand) !important;
+    color: var(--color-base) !important;
+}
+
+/* Button styling inside the table */
+.table .btn {
+    padding: 6px 12px;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: var(--color-body);
+    background-color: var(--color-brand) !important;
+    border-color: var(--color-brand) !important;
+    max-width: 100%; /* Keeps buttons aligned without resizing */
+}
+
+.table .btn:hover {
+    background-color: var(--color-brand2) !important;
+    color: var(--color-base) !important;
+}
